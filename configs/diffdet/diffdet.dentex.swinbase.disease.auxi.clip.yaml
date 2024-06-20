@@ -1,0 +1,40 @@
+_BASE_: "Base-DiffusionDet.yaml"
+MODEL:
+  WEIGHTS: "checkpoints/swin_base_patch4_window7_224_22k.pth"
+  BACKBONE:
+    NAME: build_swintransformer_fpn_backbone
+  SWIN:
+    SIZE: B-22k
+  FPN:
+    IN_FEATURES: ["swin0", "swin1", "swin2", "swin3" ]
+  DiffusionDet:
+    NUM_PROPOSALS: 500
+    NUM_CLASSES: 4  # 
+  AUXI:
+    FLAGS: True
+    SIZE: 512
+    MASK_PATCH_SIZE: 32
+    MODEL_PATCH_SIZE: 4
+    MASK_RATIO: 0.6
+    LR: 0.000025
+    DECAY: 0.05  # 0.05
+    MOMENTUM: 0.9
+    HEAVILY: True
+    RESTRUC_INDICES: [1, 3]
+    ENCODER_STRIDE: [4, 8, 16, 32]
+    LOSS_SCALE: 0.1
+    PROJECT_NUM: [48, 192, 768, 3072]
+    LOSS_TYPE: "clip"
+    PRETRAIN: ""
+    METHOD: "simMIM"
+    TASK_M: "diffdet"
+    
+    CLIP:
+      MODEL_NAME: "ViT-B/32"
+      AFFINE_TRANSFORM_FILL: 1
+      N_AUG: 2
+      STRUC_LAMBDA: 1.0
+      DISTRI_LAMBDA: 1.0
+DATASETS:
+  TRAIN: ("dentex_disease_train",)
+  TEST:  ("dentex_disease_val",)
