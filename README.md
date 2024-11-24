@@ -1,6 +1,6 @@
 # SSAD: Self-supervised Auxiliary Detection Framework for Panoramic X-ray based Dental Disease Diagnosis
 This is the offical implement code of artical [https://arxiv.org/abs/2406.13963](https://arxiv.org/abs/2406.13963). It employs the reconstruction-based Self-supervised methods to assist deep-learning model in diagnosing the Dental Disease, and the whole framework as below:
-
+![SSAD Framework](https://github.com/Dylonsword/SSAD/edit/main/figure/ssad_framework)
 
 ## Requirements
 ```
