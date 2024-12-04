@@ -1,0 +1,9 @@
+
+
+train: tooth_disease_detection/yolov8-ssad/dentex_datasets/train.txt
+val: tooth_disease_detection/yolov8-ssad/dentex_datasets/test.txt
+test: tooth_disease_detection/yolov8-ssad/dentex_datasets/test.txt 
+
+nc: 4
+
+names: ["Impacted", "Caries", "Periapical Lesion", "Deep Caries"]
